@@ -2,8 +2,8 @@ ENV['RAKE_ENV'] = 'test'
 require 'sinatra/activerecord'
 require 'rspec'
 require 'pg'
-require './survey/'
-require './question'
+require './lib/surveys'
+require './lib/questions'
 
 RSpec.configure do |config|
   config.after(:each) do
