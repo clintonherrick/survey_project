@@ -1,1 +1,24 @@
 <h1>Survey Index</h1>
+
+<table class="table table-hover">
+  <tr>
+    <th>
+      Name
+    </th>
+    <th>
+      No. of Questions
+    </th>
+  </tr>
+  <% @surveys.each do |survey| %>
+  <tr>
+  <td>
+    <a href="/survey/<%= survey.id %>"><%= survey.name %></a>
+  </td>
+  <td>
+    <%= survey.questions.length %>
+  </td>
+  </tr>
+  <% end %>
+</table>
+
+<a href="/survey/new">Add Survey</a>
