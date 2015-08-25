@@ -8,4 +8,12 @@ describe Question do
       expect(question1.survey).to eq survey1
     end
   end
+
+  describe 'validate' do
+    it 'validates the presence of a question' do
+      question = Question.new({description: ''})
+      expect(question.save()).to eq false
+    end
+  end
+
 end
