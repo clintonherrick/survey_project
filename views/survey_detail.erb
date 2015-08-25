@@ -12,7 +12,7 @@
 <% @questions.each do |question| %>
 <tr>
   <td>
-    <%= question.description%>
+    <a href="/question/<%= question.id %>"><%= question.description %></a>
   </td>
   <td>
     <%= (question.answered) %>
@@ -22,7 +22,8 @@
 
 </table>
 
-<a href="/question/new">New Question</a>
+<a href="/survey/<%= @survey.id %>/question/new" button class="btn btn-primary btn-sm" type="submit">Add Question</button></a>
+
 
 <form action="/survey/<%= @survey.id %>" method="post">
   <input type="hidden" name="_method" value="delete">

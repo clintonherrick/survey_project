@@ -4,6 +4,7 @@ require './lib/questions'
 require 'sinatra/reloader'
 require 'sinatra'
 require 'pry'
+also_reload('lib/**/*.rb')
 
 #####Survey Section######
 get '/' do
@@ -52,10 +53,24 @@ get '/questions' do
 end
 
 get '/question/new' do
+  survey_id = params.fetch('id').to_i
+  @survey = Survey.find(survey_id)
   erb :question_add
 end
 
+get '/survey/:id/question/new' do
+  survey_id = params.fetch('id').to_i
+  @survey = Survey.find(survey_id)
+  erb :question_add
+end
 
+post '/survey/:id/question' do
+  description = params.fetch('question_description')
+  survey_id = params.fetch('id').to_i
+  @question = Question.create({description: description, survey_id: survey_id})
+  @questions = Question.all
+  erb :question_success
+end
 
 post '/question' do
   description = params.fetch('question_description')
@@ -63,4 +78,17 @@ post '/question' do
   @question = Question.create({description: description, survey_id: survey_id})
   @questions = Question.all
   erb :question_success
+end
+
+get '/question/:id' do
+  erb :question_detail
+end
+
+delete '/question/:id' do
+  id = params.fetch('id').to_i
+  question = Question.find(id)
+  question.destroy
+  @questions = Question.all
+  @surveys = Survey.all
+  erb :index
 end
