@@ -1,0 +1,10 @@
+source 'http://rubygems.org'
+
+gem 'sinatra-activerecord'
+gem 'sinatra-contrib'
+gem 'sinatra'
+gem 'rspec'
+gem 'pg'
+gem 'pry'
+gem 'capybara'
+gem 'rake'
