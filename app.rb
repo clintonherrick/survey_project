@@ -81,6 +81,8 @@ post '/question' do
 end
 
 get '/question/:id' do
+  id = params.fetch('id').to_i
+  @question = Question.find(id)
   erb :question_detail
 end
 
