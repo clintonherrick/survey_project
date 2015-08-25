@@ -1,1 +1,30 @@
-HELLO WORLD
+<h2><%= @survey.name %> Survey </h2>
+
+<table class= "table table-striped">
+<tr>
+  <th>
+    Question
+  </th>
+  <th>
+    Answered
+  </th>
+</tr>
+<% @questions.each do |question| %>
+<tr>
+  <td>
+    <%= question.description%>
+  </td>
+  <td>
+    <%= (question.answered) %>
+  </td>
+    <% end %>
+  </tr>
+
+</table>
+
+<a href="/question/new">New Question</a>
+
+<form action="/survey/<%= @survey.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+</form>

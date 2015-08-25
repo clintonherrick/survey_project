@@ -1,0 +1,17 @@
+<h2>Fill out the form to add a new question</h2>
+
+<form id="/question_add" action="/question" method="post">
+  <label for="question_description">Add a question below</label>
+  <input type="text" name="question_description" placeholder="Ex. 'favorite food?'">
+  <select name="survey_id" id="survey_id">
+    <% Survey.all.each do |survey| %>
+    <option value="<%= survey.id %>"><%= survey.name %></option>
+    <% end %>
+  </select>
+  <% if Survey.any? %>
+  <button name="question_button" type="submit">Add</button>
+  <% else %>
+  <a href="/surveys/new">Please add a survey before continuing</a>
+  <% end %>
+
+</form>
