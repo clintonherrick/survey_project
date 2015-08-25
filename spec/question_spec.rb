@@ -16,4 +16,11 @@ describe Question do
     end
   end
 
+  describe 'callback' do
+    it 'converts every question to capitalize' do
+      question1 = Question.create({:description => 'what is your favorite animal?'})
+      expect(question1.description).to eq 'What is your favorite animal?'
+    end
+  end
+
 end
