@@ -15,7 +15,13 @@
     <a href="/question/<%= question.id %>"><%= question.description %></a>
   </td>
   <td>
-    <%= (question.answered) %>
+    <% if %>
+    <% question.answered = true %>
+      unanswered
+    <% else %>
+      answered
+    <% end %>
+
   </td>
     <% end %>
   </tr>
