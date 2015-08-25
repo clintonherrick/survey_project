@@ -9,4 +9,13 @@ describe Survey do
       expect(survey1.questions).to eq [question1, question2]
     end
   end
+
+  describe 'validate' do
+    it 'validates the presence of a name' do
+      survey = Survey.new({:name => ""})
+      expect(survey.save()). to eq false
+    end
+  end
+
+
 end
