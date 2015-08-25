@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'pry'
 
 describe Survey do
   describe 'questions' do
@@ -17,5 +18,11 @@ describe Survey do
     end
   end
 
+  describe 'callback' do
+    it 'converts a survey name to title case' do
+      survey1 = Survey.create({name: 'epicodus'})
+      expect(survey1.name).to eq 'EPICODUS'
+    end
+  end
 
 end
